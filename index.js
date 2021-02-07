@@ -11,23 +11,20 @@ const output1 = truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Di
 
 console.log('output 1: ', output1)
 
-// CHALLENGE TWO: INCOMPLETE
+// CHALLENGE TWO: 
 // Given the array arr, iterate through and remove each element starting from the first element (the 0 index) until the function func returns true when the iterated element is passed through it.
 // Then return the rest of the array once the condition is satisfied, otherwise, arr should be returned as an empty array.
 function dropElements(arr, func) {
-  const dupArr = []
-  const newArr = arr.filter((item, i) => {
-    if (arr.filter(num => num === item).length > 1) {
-      dupArr.push(i)
+  for (let i = 0; i <= arr.length - 1; i++) {
+    if (func(arr[i])) {
+      return arr.slice(i)
+    } else if (i === arr.length - 1) {
+      return []
     }
-    return func(item)
-  })
-  const newDupArr = [...new Set(dupArr)]
-  const ridOffDup = newDupArr.filter(item => !newArr.includes(item))
-  return newArr.concat(ridOffDup)
+  }
 }
 
-const output2 = dropElements([1, 2, 3, 9, 2], function(n) {return n > 2})
+const output2 = dropElements([0, 1, 0, 1], function(n) {return n === 1})
 
 console.log('output2: ', output2)
 
