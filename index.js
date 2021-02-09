@@ -22,9 +22,21 @@ function dropElements(arr, func) {
       return []
     }
   }
+
+
+  // let result
+
+  // arr.forEach((num, i) => {
+  //   if (func(num)) {
+  //     result = arr.slice(i - 1)
+  //   }
+
+  // })
+
+  // return result
 }
 
-const output2 = dropElements([0, 1, 0, 1], function(n) {return n === 1})
+const output2 = dropElements([1, 2, 3, 7, 4], function(n) {return n > 3})
 
 console.log('output2: ', output2)
 
@@ -65,3 +77,20 @@ function whatIsInAName(collection, source) {
 const output4 = whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" })
 
 console.log('output4: ', output4)
+
+// CHALLENGE 5:
+// Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
+
+// The first two numbers in the Fibonacci sequence are 1 and 1. Every additional number in the sequence is the sum of the two previous numbers. The first six numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8.
+function sumFibs(num) {
+  let arr = [1, 1];
+  for (let i = 2; i < num + 1; i++){
+      arr.push(arr[i - 2] + arr[i - 1])
+  }
+  console.log(arr)
+return arr.filter(n => n <= num && n % 2 !== 0).reduce((acc, n) =>  acc + n)
+
+}
+
+const output5 = sumFibs(10)
+console.log('output5: ', output5)
